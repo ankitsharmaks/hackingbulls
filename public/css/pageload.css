@@ -38,3 +38,13 @@
     width: 65%;
     margin: 0 auto;
 }
+
+#error {
+    position: fixed;
+    bottom: 0;
+    right: 35%;
+    width: 300px;
+    color: red;
+    font-weight: bold;
+    display: none;
+}
