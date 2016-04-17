@@ -47,13 +47,19 @@ function convertHodSearchJsonToTimeline(data){
 	// console.log(result.events)
 	for( var i=0; i<data.events.length; i++) {
 		var d = new Date(dates[i].pub_date);
+		var url = "";
+		if (dates[i].multimedia != null){
+		    url = "http://www.nytimes.com/" + dates[i].multimedia[0].url;
+		}
 		if (i == 0) {
 		result.events = [{"start_date" : {"month": d.getMonth() + 1, "day" : d.getDate(), "year" : d.getFullYear()},
-			"text" : {"headline" : dates[i].title, "text" : dates[i].snippet[0]}}];
+			"text" : {"headline" : dates[i].title, "text" : dates[i].snippet[0]},
+			"media" : {"url" : url}}];
 		}
 		else {
 			result.events.push({"start_date" : {"month": d.getMonth() + 1, "day" : d.getDate(), "year" : d.getFullYear()},
-			"text" : {"headline" : dates[i].title, "text" : dates[i].snippet[0]}});
+			"text" : {"headline" : dates[i].title, "text" : dates[i].snippet[0]},
+			"media" : {"url" : url}}});
 		}
 		// data.events[i].start_Date = {"month": d.getMonth() + 1, "day" : d.getDate(), "year" : d.getFullYear()};
 		
