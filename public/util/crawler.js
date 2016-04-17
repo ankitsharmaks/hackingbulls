@@ -31,7 +31,7 @@ exports.crawlNYTimes = function crawlNYTimes(topic, startDate, endDate, delegate
         //the whole response has been recieved, so we just print it out here
         response.on('end', function () {
             //console.log(jsonResponse);
-            delegateCallback(jsonResponse);
+            delegateCallback(jsonResponse, topic);
         });
     }
     console.log(options);

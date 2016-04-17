@@ -12,10 +12,11 @@ for (var i = tokenList.length - 1; i >= 0; i--) {
 	var token = tokenList[i];
 	console.log("Fetching data for token "+token);
 	//var token ="elon musk";
-	crawler.crawlNYTimes(token, "20150412", "20160413", function callback(response) {
+
+	crawler.crawlNYTimes(token, "20150412", "20150413", function callback(response, searchTerm) {
 		//console.log(response);
 		console.log("Data from nytimes fetched for token "+token);
-		var hodJson = json_helper.convertNewsJsonHodIndexJson(JSON.parse(response));
+		var hodJson = json_helper.convertNewsJsonHodIndexJson(JSON.parse(response), searchTerm);
 
 		setTimeout(function(){
 						addindex.callAddToIndexAPI(JSON.stringify(hodJson), function callback(responseBody){

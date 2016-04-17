@@ -1,3 +1,5 @@
 exports.tokenList = [
 	'Donald Trump',
-	'Bernie Sanders'];
+	'Bernie Sanders',
+	'Olympics'];
+

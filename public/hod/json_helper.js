@@ -12,31 +12,38 @@
     responseTextInput.innerHTML = JSON.stringify(data);
 });*/
 
-var jsonfile = require('./file.json');
-convertHodSearchJsonToTimeline(JSON.stringify(jsonfile));
-
-exports.convertNewsJsonHodIndexJson = function convertNewsJsonHodIndexJson(data){
+exports.convertNewsJsonHodIndexJson = function convertNewsJsonHodIndexJson(data, searchTerm){
 	//console.log(data)
 	//console.log(data.response.docs)
 
 	data.document = data.response.docs;
 	delete data.response
 
+	outputData = {};
+	outputData.document = [];
+
 	for(var i=0; i<data.document.length; i++) {
-		value = data.document[i];
-		console.log("converting data for news: "+value.headline.main)
-		value["title"] = value.headline.main;
-		// value["myfield"] = ["snippet", "source","title","lead_paragraph"];
+		var doc = {} ;//data.document[i];
+
+		for(key in doc) {
+			doc.key = data.document[i].key;
+		}
+		//console.log("converting data for news: " + doc.headline.main);
+		//doc["title"] = doc.headline.main;
+		doc.searchTerm = searchTerm;
+		doc.myfield = '["snippet", "source","title","lead_paragraph", "searchTerm"]';
 		//console.log(value);
+		outputData.document.push(doc);
 	}
 	/*
 	$.each(data, function(index, value) {
 		value[0]["title"] = value[0].headline.main;
-		value[0]["myfield"] = ["snippet", "source","title","lead_paragraph"];
-	});*/
+		value[0]["myfield"] = ["snippet", "source","title","lead_paragraph"];	
+});*/
 	delete data.status;
 	delete data.copyright;
-	return data;
+	//outputData["document"] = docList;
+	return outputData;
 	/*var responseTextInput = document.getElementById("responseText");
     responseTextInput.innerHTML = JSON.stringify(data);*/
 }
