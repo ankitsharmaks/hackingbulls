@@ -1,0 +1,35 @@
+.myButton {
+    background-color:#44c767;
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
+    border:1px solid #18ab29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+    background-color:#5cbf2a;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+.textox {
+    width: 282px;
+    height: 40px;
+    border: solid 2px #8B9696;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    box-shadow: inset 0px 1px 2px 0px #9C9C9C;
+    background-color: #FFFFFF;
+    outline: none;
+    color: #474747;
+}
