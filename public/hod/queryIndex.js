@@ -59,7 +59,7 @@ function convertHodSearchJsonToTimeline(data){
 		else {
 			result.events.push({"start_date" : {"month": d.getMonth() + 1, "day" : d.getDate(), "year" : d.getFullYear()},
 			"text" : {"headline" : dates[i].title, "text" : dates[i].snippet[0]},
-			"media" : {"url" : url}}});
+			"media" : {"url" : url}});
 		}
 		// data.events[i].start_Date = {"month": d.getMonth() + 1, "day" : d.getDate(), "year" : d.getFullYear()};
 		
