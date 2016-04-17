@@ -11,16 +11,15 @@
 
 function crawlNYTimes(topic, startDate, endDate)
 {
-    //var topic = document.getElementById("topic").value;
-        //.value().split(' ').join('+');
-    //var startDate = document.getElementById("datePicker1").value;
-    //var endDate = document.getElementById("datePicker2").value;
+    var topic = document.getElementById("topic").value.split(' ').join('+');
+    var startDate = document.getElementById("datePicker1").value;
+    var endDate = document.getElementById("datePicker2").value;
     var apiKey = "0eadf8a8e685079f3f53202a194920f6:10:70223982";
     var NYTApi = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=";
     NYTApi = NYTApi+topic+"&begin_date="+startDate+"&end_date="+endDate+"&sort=newest&api-key="+apiKey;
     var responseJson = httpGet(NYTApi);
-    //var responseTextInput = document.getElementById("responseText");
-    //responseTextInput.setAttribute("value", responseJson);
+    var responseTextInput = document.getElementById("responseText");
+    responseTextInput.innerHTML = responseJson;
     return responseJson;
 }
 
