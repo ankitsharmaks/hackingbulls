@@ -1,6 +1,6 @@
 function queryIndex(searchkey) {
 	var baseURL = "https://api.havenondemand.com/1/api/sync/querytextindex/v1?";
-	var urlString = baseURL + "text=" + encodeURIComponent(searchkey) + "&ignore_operators=false&indexes=news_eng&print_fields=title&promotion=false&sort=date&total_results=true&apikey=" + "5799741a-d1cf-4d31-bccd-e67bbd335700";
+	var urlString = baseURL + "text=" + encodeURIComponent(searchkey) + "&ignore_operators=false&indexes=angel&print_fields=title&promotion=false&sort=date&total_results=true&apikey=" + "a18b21db-7694-45a3-8741-6c955b545969";
 	var callback = function(data, status) {
 		if(status == "success") {
 			handleSearchResponse(data);
