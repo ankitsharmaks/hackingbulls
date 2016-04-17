@@ -1,0 +1,14 @@
+{
+  "name": "hod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sentiment.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "havenondemand": "~1.1.2"
+  }
+}

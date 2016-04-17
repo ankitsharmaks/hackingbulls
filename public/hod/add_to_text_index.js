@@ -4,9 +4,9 @@ var client = new havenondemand.HODClient('a18b21db-7694-45a3-8741-6c955b545969',
 
 //callAddToIndexAPI(JSON.stringify(jsonfile));
 
-exports.callAddToIndexAPI = function callAddToIndexAPI(jsonObj) {
-	var data = {"json":jsonObj,
-				"index":'hackingbulls'};
+exports.callAddToIndexAPI = function callAddToIndexAPI(jsonObj, delegateCallback) {
+	var data = {"json":""+jsonObj,
+				"index":'angel'};
 	/*data = {};
 	data.json = jsonObj;
 	data.index = "hackingbulls"*/
@@ -20,5 +20,6 @@ exports.callAddToIndexAPI = function callAddToIndexAPI(jsonObj) {
 		console.log(resp);*/
 		console.log("addtotextindex callback error:");
 		console.log(err);
+		delegateCallback(body.document);
 	});
 }

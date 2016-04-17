@@ -12,13 +12,17 @@ for (var i = tokenList.length - 1; i >= 0; i--) {
 	var token = tokenList[i];
 	console.log("Fetching data for token "+token);
 	//var token ="elon musk";
-	crawler.crawlNYTimes(token, "20150412", "20150413", function callback(response) {
+	crawler.crawlNYTimes(token, "20150412", "20160413", function callback(response) {
 		//console.log(response);
 		console.log("Data from nytimes fetched for token "+token);
 		var hodJson = json_helper.convertNewsJsonHodIndexJson(JSON.parse(response));
 
 		setTimeout(function(){
-						addindex.callAddToIndexAPI(JSON.stringify(hodJson));
+						addindex.callAddToIndexAPI(JSON.stringify(hodJson), function callback(responseBody){
+							console.log("Logging final output------------------------------------------");
+							console.log(responseBody);
+							console.log("**********************");
+						});
 		}, 2000);
 	});
 };
