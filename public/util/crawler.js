@@ -8,25 +8,32 @@
  * @param startDate
  * @param endDate
  */
+var http = require('http');
 
-function crawlNYTimes(topic, startDate, endDate)
-{
-    var topic = document.getElementById("topic").value.split(' ').join('+');
-    var startDate = document.getElementById("datePicker1").value;
-    var endDate = document.getElementById("datePicker2").value;
+exports.crawlNYTimes = function crawlNYTimes(topic, startDate, endDate, delegateCallback) {
     var apiKey = "0eadf8a8e685079f3f53202a194920f6:10:70223982";
-    var NYTApi = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=";
-    NYTApi = NYTApi+topic+"&begin_date="+startDate+"&end_date="+endDate+"&sort=newest&api-key="+apiKey;
-    var responseJson = httpGet(NYTApi);
-    var responseTextInput = document.getElementById("responseText");
-    responseTextInput.innerHTML = responseJson;
-    return responseJson;
-}
+    var baseURL = "api.nytimes.com";
+    var pathString = "/svc/search/v2/articlesearch.json?q=";
+    pathString = pathString + encodeURIComponent(topic) + "&begin_date="+startDate+"&end_date="+endDate+"&sort=newest&api-key="+apiKey;
 
-function httpGet(url)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", url, false);
-    xmlHttp.send();
-    return xmlHttp.responseText;
+    var options = {
+        host: baseURL,
+        path: pathString
+    };
+    var jsonResponse = "";
+
+    callback = function(response) {
+        //another chunk of data has been recieved, so append it to `str`
+        response.on('data', function (chunk) {
+           jsonResponse += chunk;
+        });
+
+        //the whole response has been recieved, so we just print it out here
+        response.on('end', function () {
+            //console.log(jsonResponse);
+            delegateCallback(jsonResponse);
+        });
+    }
+    console.log(options);
+    http.get(options, callback);
 }
