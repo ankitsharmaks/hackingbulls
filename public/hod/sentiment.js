@@ -1,5 +1,5 @@
 var havenondemand = require('havenondemand');
-var client = new havenondemand.HODClient('5799741a-d1cf-4d31-bccd-e67bbd335700', 'v1');
+var client = new havenondemand.HODClient('a18b21db-7694-45a3-8741-6c955b545969', 'v1');
 
 callAddToIndexAPI();
 
