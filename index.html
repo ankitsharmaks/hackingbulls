@@ -26,6 +26,9 @@
     <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 </head>
 <body>
+<div id="banner">
+    <img src="images/banner-2.png">
+</div>
 <div id="searchDiv">
     <input id="searchString" type="text" class="textox"/>
     <button id="submitSearch" class="myButton" value="submit">Search</button>
@@ -36,8 +39,6 @@
 <div id='timeline-embed'></div>
 <!-- 3 -->
 <script type="text/javascript">
-    timeline = new TL.Timeline('timeline-embed',
-            null);
 </script>
 <script type="text/javascript">
     jQuery.fn.center = function () {
@@ -55,7 +56,6 @@
     });
     $('#timeline-embed').fadeOut();
     $('#searchDiv').center();
-
     $(window).resize(function() {
         $('#searchDiv').center();
     });
@@ -73,16 +73,44 @@
         }
     });
     $('#timeline-goback').click(function () {
+        $('#timeline-embed').empty();
         $('#timeline-embed').fadeOut(1000);
-        $('#searchDiv').fadeIn();
+        $('#searchDiv').fadeIn(500);
+        $('#banner').fadeIn(500);
     });
 
     $('#submitSearch').click(function(){
         console.log('Hi, thanks for submitting value -> '+document.getElementById('searchString').value);
+        $('#timeline-embed').fadeIn();
+        var opts = {
+            lines: 12             // The number of lines to draw
+            , length: 7             // The length of each line
+            , width: 5              // The line thickness
+            , radius: 10            // The radius of the inner circle
+            , scale: 1.0            // Scales overall size of the spinner
+            , corners: 1            // Roundness (0..1)
+            , color: '#000'         // #rgb or #rrggbb
+            , opacity: 1/4          // Opacity of the lines
+            , rotate: 0             // Rotation offset
+            , direction: 1          // 1: clockwise, -1: counterclockwise
+            , speed: 1              // Rounds per second
+            , trail: 100            // Afterglow percentage
+            , fps: 20               // Frames per second when using setTimeout()
+            , zIndex: 2e9           // Use a high z-index by default
+            , className: 'spinner'  // CSS class to assign to the element
+            , top: '50%'            // center vertically
+            , left: '50%'           // center horizontally
+            , shadow: false         // Whether to render a shadow
+            , hwaccel: false        // Whether to use hardware acceleration (might be buggy)
+            , position: 'absolute'  // Element positioning
+        };
+        var target = document.getElementById('timeline-embed');
+        var spinner = new Spinner(opts).spin(target);
+        $(target).data('spinner', spinner);
+        console.log(target);
         queryIndex(document.getElementById('searchString').value);
         $('#searchDiv').fadeOut();
-        var target = document.getElementById('timeline-embed');
-        var spinner = new Spinner().spin(target);
+        $('#banner').fadeOut();
     });
 </script>
 
