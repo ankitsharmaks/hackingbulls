@@ -1,0 +1,15 @@
+{
+    "document" :
+    [
+        {
+            "title" : "This is my document",
+            "reference" : "mydoc1",
+            "myfield" : ["a value"],
+            "content" : "A large block of text, which makes up the main body of the document."
+        }, {
+            "title" : "My Other document",
+            "reference" : "mydoc2",
+            "content" : "This document is about something else"
+        }
+    ]
+}
